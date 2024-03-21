@@ -323,6 +323,19 @@ body {
   color: white;
 }
 
+.rsvp button {
+  background-color: var(--pink);
+  color: white;
+  border: 1px solid var(--pink);
+}
+
+.rsvp button:hover {
+  background-color: white;
+  color: var(--pink);
+  border: 1px solid white;
+}
+
+
 /* madia query */
 /* === */
 @media (max-width: 1200px) {
