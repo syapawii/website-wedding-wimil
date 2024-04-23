@@ -28,7 +28,7 @@
   <section id="hero"
     class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
     <main>
-      <h4>Kepada Bapak/Ibu/Saudara/i,</h4>
+      <h4><span>Kepada Bapak/Ibu/Saudara/i,</span></h4>
       <h1>Milla & Alwi</h1>
       <p>Akan melaksanakan resepsi pernikahan dalam :</p>
       <div class="simply-countdown"></div>
@@ -141,6 +141,12 @@
             Jl. Pangeran Hidayatullah, Pelabuhan, Kec. Samarinda
             Kota, Kota Samarinda, Kalimantan Timur.
           </p>
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15958.659152483604!2d117.154888!3d-0.502646!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f0ad273ef15%3A0x76ecd4057e762c6a!2sAston%20Samarinda%20Hotel%20%26%20Convention%20Center!5e0!3m2!1sid!2sid!4v1712421209659!5m2!1sid!2sid"
+            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
           <a href="https://maps.app.goo.gl/CCWv1Xzuvp3bHECfA" rel="noopener" target="_blank"
             class="btn btn-light btn-sm my-3">Klik Untuk Membuka Peta</a>
           <p class="description">
@@ -355,6 +361,30 @@
         </div>
       </form>
 
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panda-wedding.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -414,8 +444,8 @@
       <source src="audio/Shane Filan - Beautiful In White (Official Video).mp3" type="audio/mp3">
     </audio>
 
-    <div class="audio-icon-wrapper" style="display: none;">
-      <i class="bi bi-disc"></i>
+    <div class="audio-icon-wrapper">
+      <i class="bi bi-pause-circle"></i>
     </div>
   </div>
 
@@ -448,9 +478,9 @@
     const stickyTop = document.querySelector('.sticky-top');
     const offcanvas = document.querySelector('.offcanvas');
 
-    function enableScroll() {
-      document.body.style.overflowY = "visible"
-    }
+    // function enableScroll() {
+    //   document.body.style.overflowY = "visible"
+    // }
 
     offcanvas.addEventListener('show.bs.offcanvas', function () {
       stickyTop.style.overflow = 'visible';
@@ -462,8 +492,12 @@
 
   </script>
 
-  <!-- <script>
+  <script>
     const rootElement = document.querySelector(":root");
+    const audioIconWrapper = document.querySelector('.audio-icon-wrapper')
+    const audioIcon = document.querySelector('.audio-icon-wrapper i')
+    const song = document.querySelector('#song');
+    letisPlaying = false;
 
     function disableScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -480,14 +514,37 @@
     function enableScroll() {
       window.onscroll = function () { }
       rootElement.style.scrollBehavior = 'smooth';
-      localStorage.setItem('opened', 'true');
+      // localStorage.setItem('opened', 'true');
+      playAudio();
     }
 
-    if (!localStorage.getItem('opened')) {
-      disableScroll();
-
+    function playAudio() {
+      audioIconWrapper.style.displey = 'flex';
+      song.play();
+      isPlaying = true;
     }
-  </script> -->
+
+    audioIconWrapper.onclick = function () {
+      if (isPlaying) {
+        song.pause();
+        audioIcon.classList.remove('bi-disc');
+        audioIcon.classList.add('bi-pause-circle');
+
+      } else {
+        song.play();
+        audioIcon.classList.add('bi-disc');
+        audioIcon.classList.remove('bi-pause-circle');
+      }
+
+      isPlaying = !isPlaying;
+    }
+
+    // if (!localStorage.getItem('opened')) {
+    //   disableScroll();
+
+    // }
+    disableScroll()
+  </script>
 
   <script>
     window.addEventListener("load", function () {
@@ -506,6 +563,15 @@
       });
     });
 
+  </script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const nama = urlParams.get('n') || '';
+    const pronaun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
+
+    const namaContainer = document.querySelector('.hero h4 span');
+    namaContainer.innerText = `${pronaun} ${nama},`.replace(/ ,$/, ','); 
   </script>
 </body>
 
