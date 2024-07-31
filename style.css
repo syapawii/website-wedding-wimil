@@ -479,17 +479,17 @@ footer li {
 
   
   .timeline li .timeline-image {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
 
   .timeline li .timeline-panel::before {
-    top: 37px;
+    top: 35px;
     
   }
   
   .timeline li .timeline-panel::after {
-    top: 38px;
+    top: 35px;
 
   }
 
