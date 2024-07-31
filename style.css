@@ -167,6 +167,7 @@ body {
 	background-color: rgba(255, 255, 255, 0.2) !important;
 	color: white !important;
 	border: 2px solid #999;
+  
 }
 
 .info .card-header {
@@ -472,8 +473,8 @@ footer li {
 	}
 
   .simply-countdown > .simply-section {
-    padding: 45px;
-    margin: 3px;
+    padding: 42px;
+    margin: 2px;
   }
 
   
